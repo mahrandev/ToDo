@@ -1,34 +1,25 @@
-import { body, themeIcons } from "./element";
+import { backgroundImg, body, themeToggle } from "./element";
 
-function showElement(element) {
-  element.classList.remove("hidden");
-}
 
-function hideElement(element) {
-  element.classList.add("hidden");
-}
 
-// دالة لتطبيق السمات
 export function applyTheme(theme) {
-  // استخدام toggle لتغيير الكلاسات على الـ body
-  body.classList.toggle("dark-theme", theme === "dark");
-  body.classList.toggle("light-theme", theme === "light");
+  const isDark = theme === "dark";
 
-  // إظهار وإخفاء الأيقونات والخلفيات
-  if (theme === "dark") {
-    hideElement(document.querySelector(".icon-moon"));
-    showElement(document.querySelector(".icon-sun"));
-    hideElement(document.querySelector(".bg-img-light"));
-    showElement(document.querySelector(".bg-img-dark"));
-  } else {
-    showElement(document.querySelector(".icon-moon"));
-    hideElement(document.querySelector(".icon-sun"));
-    showElement(document.querySelector(".bg-img-light"));
-    hideElement(document.querySelector(".bg-img-dark"));
-  }
+  // تغيير فئات الـ body
+  body.classList.toggle("dark-theme", isDark);
+  body.classList.toggle("light-theme", !isDark);
+
+  // تغيير الأيقونة
+  themeToggle.src = isDark ? "images/icon-sun.svg" : "images/icon-moon.svg";
+  themeToggle.alt = isDark ? "Sun Icon" : "Moon Icon";
+
+  // تغيير صورة الخلفية
+  backgroundImg.src = isDark
+    ? "images/bg-desktop-dark.jpg"
+    : "images/bg-desktop-light.jpg";
 }
 
-// دالة تبديل وحفظ الوضع
+
 export function toggleThemeAndSave() {
   const isDark = body.classList.contains("dark-theme");
   const newTheme = isDark ? "light" : "dark";

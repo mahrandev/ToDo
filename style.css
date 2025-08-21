@@ -62,7 +62,7 @@ body {
   overflow-x: hidden;
 }
 
-.background {
+.background-img {
   max-width: 100%;
   width: 100%;
   position: absolute;
@@ -88,8 +88,6 @@ body {
   color: white;
   letter-spacing: 20px;
 }
-.icon-moon {
-}
-.hidden {
-  display: none;
+.theme-icon {
+  cursor: pointer;
 }

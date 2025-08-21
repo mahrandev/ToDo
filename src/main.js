@@ -1,9 +1,7 @@
 import { applyTheme, toggleThemeAndSave } from "./darkMood";
-import { themeIcons } from "./element";
+import { themeToggle } from "./element";
 
-themeIcons.forEach((icon) => {
-  icon.addEventListener("click", toggleThemeAndSave);
-});
+themeToggle.addEventListener("click", toggleThemeAndSave);
 
 const savedTheme = localStorage.getItem("theme") || "light";
 applyTheme(savedTheme);
