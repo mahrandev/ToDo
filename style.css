@@ -1,0 +1,95 @@
+:root {
+  /* Primary Colors */
+  --primary-blue: hsl(220, 98%, 61%);
+  --check-bg-start: hsl(192, 100%, 67%);
+  --check-bg-end: hsl(280, 87%, 65%);
+
+  /* Layout */
+  --mobile-width: 375px;
+  --desktop-width: 1440px;
+
+  /* Typography */
+  --font-family: "Josefin Sans", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --body-font-size: 18px;
+}
+
+/* Light Theme */
+.light-theme {
+  --light-gray: hsl(0, 0%, 98%);
+  --light-purple-300: hsl(234, 39%, 85%);
+  --light-gray-300: hsl(233, 11%, 84%);
+  --light-gray-600: hsl(236, 9%, 61%);
+  --light-navy-850: hsl(235, 19%, 35%);
+
+  /* Backgrounds and text based on light theme */
+  --bg-color: var(--light-gray);
+  --text-color: var(--light-navy-850);
+  --input-color: var(--light-purple-300);
+}
+
+/* Dark Theme */
+.dark-theme {
+  --dark-navy-950: hsl(235, 21%, 11%);
+  --dark-navy-900: hsl(235, 24%, 19%);
+  --dark-purple-300: hsl(234, 39%, 85%);
+  --dark-purple-100-hover: hsl(236, 33%, 92%);
+  --dark-purple-600: hsl(235, 16%, 43%);
+  --dark-purple-700: hsl(233, 14%, 35%);
+  --dark-purple-800: hsl(237, 14%, 26%);
+  --dark-gray-600: hsl(236, 9%, 61%);
+
+  /* Backgrounds and text based on dark theme */
+  --bg-color: var(--dark-navy-950);
+  --text-color: var(--dark-purple-300);
+  --input-color: var(--dark-navy-900);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--body-font-size);
+  background-color: var(
+    --bg-color
+  ); /* This will change based on the theme class */
+  color: var(--text-color); /* This will change based on the theme class */
+  overflow-x: hidden;
+}
+
+.background {
+  max-width: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.container {
+  max-width: var(--desktop-width);
+  margin-inline: auto;
+  margin-block-start: 20px;
+  padding: 20px;
+  width: 50%;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
+  color: white;
+  letter-spacing: 20px;
+}
+.icon-moon {
+}
+.hidden {
+  display: none;
+}
