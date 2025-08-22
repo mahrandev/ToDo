@@ -1,6 +1,4 @@
-import { backgroundImg, body, themeToggle } from "./element";
-
-
+import { body, heroImg, heroSource, themeToggle } from "./element";
 
 export function applyTheme(theme) {
   const isDark = theme === "dark";
@@ -14,11 +12,14 @@ export function applyTheme(theme) {
   themeToggle.alt = isDark ? "Sun Icon" : "Moon Icon";
 
   // تغيير صورة الخلفية
-  backgroundImg.src = isDark
-    ? "images/bg-desktop-dark.jpg"
-    : "images/bg-desktop-light.jpg";
+  if (isDark) {
+    heroImg.src = "images/bg-desktop-dark.jpg";
+    heroSource.srcset = "images/bg-mobile-dark.jpg";
+  } else {
+    heroImg.src = "images/bg-desktop-light.jpg";
+    heroSource.srcset = "images/bg-mobile-light.jpg";
+  }
 }
-
 
 export function toggleThemeAndSave() {
   const isDark = body.classList.contains("dark-theme");

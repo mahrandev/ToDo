@@ -24,9 +24,10 @@
   --light-navy-850: hsl(235, 19%, 35%);
 
   /* Backgrounds and text based on light theme */
-  --bg-color: var(--light-gray);
+  --bg-color: var(--light-gray-300);
   --text-color: var(--light-navy-850);
-  --input-color: var(--light-purple-300);
+  --input-color: var(--light-gray);
+  --circle-color: var(--light-gray-300);
 }
 
 /* Dark Theme */
@@ -44,6 +45,7 @@
   --bg-color: var(--dark-navy-950);
   --text-color: var(--dark-purple-300);
   --input-color: var(--dark-navy-900);
+  --circle-color: var(--dark-purple-600);
 }
 
 * {
@@ -62,7 +64,7 @@ body {
   overflow-x: hidden;
 }
 
-.background-img {
+.hero img {
   max-width: 100%;
   width: 100%;
   position: absolute;
@@ -77,6 +79,7 @@ body {
   padding: 20px;
   width: 50%;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -90,4 +93,176 @@ body {
 }
 .theme-icon {
   cursor: pointer;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: var(
+    --input-color
+  ); /* This will change based on the theme class */
+  padding: 15px;
+  border-radius: 5px;
+  margin-block: 20px;
+}
+
+.todo-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-left: 15px;
+  width: 100%;
+  color: var(---color); /* This will change based on the theme class */
+  font-size: var(--body-font-size);
+}
+.todo-input::placeholder {
+  opacity: 0.7;
+}
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--circle-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#todo-list {
+  background-color: var(--input-color);
+  border-radius: 5px;
+  /* box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5); */
+
+  list-style: none;
+
+  border-radius: 5px;
+  margin-block: 20px;
+}
+#todo-list li {
+  display: flex;
+  justify-content: space-between; /* لفصل المحتوى عن زر الحذف */
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  font-size: var(--body-font-size);
+  border-bottom: 1px solid var(--circle-color); /* خط فاصل بين المهام */
+}
+#todo-list li:last-child {
+  border-bottom: none;
+}
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.todo-item.completed .task-text {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+.task-text {
+  cursor: pointer;
+  word-break: break-all;
+}
+.delete-btn {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.delete-btn:hover {
+  opacity: 1;
+}
+.todo-item.completed .circle {
+  background: linear-gradient(var(--check-bg-start), var(--check-bg-end));
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-item.completed .circle::before {
+  content: ""; /* ضروري لعرض العنصر الزائف */
+  display: inline-block;
+  width: 12px; /* اضبط الحجم حسب أيقونتك */
+  height: 12px;
+  background-image: url("images/icon-check.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--input-color);
+  padding: 15px;
+  border-radius: 5px;
+  margin-block: 20px;
+}
+.footer #items-left {
+  color: var(--text-color);
+  opacity: 0.5;
+}
+.footer #clear-completed {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  opacity: 0.5;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+.footer #clear-completed:hover {
+  opacity: 1;
+}
+.filter-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  opacity: 0.5;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  margin-inline: 5px;
+  padding: 5px;
+}
+.filter-btn:hover {
+  opacity: 1;
+}
+
+.filter-btn.active {
+  color: var(--primary-blue);
+  opacity: 1;
+}
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mobile-filters {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--input-color);
+  padding: 15px;
+  border-radius: 5px;
+  margin-block: 20px;
+  gap: 10px;
+}
+
+.drag-and-drop {
+  color: var(--text-color);
+  opacity: 0.5;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  margin-inline: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 90%;
+    padding: 20px 0;
+  }
+  .filters {
+    display: none;
+  }
+  .mobile-filters {
+    display: flex;
+  }
 }

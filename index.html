@@ -9,13 +9,48 @@
 </head>
 
 <body class="light-theme">
-  <img class="background-img" src="images/bg-desktop-dark.jpg" alt="background Image">
+  <picture class="hero">
+    <!-- الصورة للشاشات الصغيرة -->
+    <source class="hero-source" srcset="/images/bg-mobile-dark.jpg" media="(max-width: 900px)">
+
+    <!-- الصورة الافتراضية (للشاشات الكبيرة) -->
+    <img class="hero-img" src="images/bg-desktop-dark.jpg" alt="Hero Image">
+  </picture>
   <div class="container">
     <header class="header">
       <h1 class="title">Todo</h1>
       <img class="theme-icon" src="images/icon-moon.svg" alt="theme-icon" id="theme-toggle">
     </header>
+    <div class="input-container">
+      <div class="circle unchecked" id="circle"></div>
+      <input type="text" class="todo-input" placeholder="Create a new todo..." id="todo-input">
+
+    </div>
+    <ul id="todo-list">
+      <!-- <li class="todo-item completed" draggable="true">
+        <div class="task-content">
+          <div class="circle "></div>
+          <p class="task-text">Complete online JavaScript course</p>
+        </div>
+        <img src="images/icon-cross.svg" class="delete-btn" alt="Delete task">
+      </li> -->
+    </ul>
+    <div class="footer">
+      <span id="items-left"><span id="item-count">0</span> items left</span>
+      <div class="filters">
+        <button class="filter-btn active " data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+      <button class="clear-completed" id="clear-completed">Clear Completed</button>
+    </div>
+    <div class="mobile-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+    </div>
   </div>
+  <span class="drag-and-drop">Drag and drop to reorder list</span>
   <script type="module" src="./src/main.js"></script>
 </body>
 
