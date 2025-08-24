@@ -22,6 +22,7 @@
   --light-gray-300: hsl(233, 11%, 84%);
   --light-gray-600: hsl(236, 9%, 61%);
   --light-navy-850: hsl(235, 19%, 35%);
+  --drag-over-bg: hsl(233, 11%, 84%);
 
   /* Backgrounds and text based on light theme */
   --bg-color: var(--light-gray-300);
@@ -32,6 +33,7 @@
 
 /* Dark Theme */
 .dark-theme {
+  --drag-over-bg: hsl(237, 14%, 26%);
   --dark-navy-950: hsl(235, 21%, 11%);
   --dark-navy-900: hsl(235, 24%, 19%);
   --dark-purple-300: hsl(234, 39%, 85%);
@@ -118,7 +120,8 @@ body {
 .todo-input::placeholder {
   opacity: 0.7;
 }
-.circle {
+.circle,
+.click {
   width: 20px;
   height: 20px;
   border: 1px solid var(--circle-color);
@@ -144,6 +147,16 @@ body {
   padding: 15px;
   font-size: var(--body-font-size);
   border-bottom: 1px solid var(--circle-color); /* خط فاصل بين المهام */
+  transition: all 0.3s ease;
+}
+
+.todo-item.dragging {
+  opacity: 0.5;
+}
+
+.todo-item.drag-over {
+  transform: translateY(10px);
+  background-color: var(--drag-over-bg);
 }
 #todo-list li:last-child {
   border-bottom: none;
@@ -167,6 +180,11 @@ body {
 }
 .delete-btn:hover {
   opacity: 1;
+}
+
+.circle:focus, .delete-btn:focus {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
 }
 .todo-item.completed .circle {
   background: linear-gradient(var(--check-bg-start), var(--check-bg-end));
@@ -252,6 +270,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.todo-item.drag-over {
+  background-color: var(--drag-over-bg);
 }
 
 @media (max-width: 900px) {
